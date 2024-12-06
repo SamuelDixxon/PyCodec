@@ -1,8 +1,6 @@
 # PyCodec
 Learning Codecs in Python
 
-Here is the project outline in Markdown format:
-
 **PyCodec**
 ================
 
