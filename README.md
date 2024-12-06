@@ -97,19 +97,3 @@ Develop a Python-based codec library that can compress and decompress various ty
 * Existing codec implementations (e.g. Huffman, LZW, LZ77)
 * Documentation and API references for the codec library
 * Testing and debugging tools (e.g. Pytest, Pylint)
-
-**Project Risks**
-----------------
-
-* Difficulty in implementing the codec library
-* Difficulty in testing and debugging the codec library
-* Difficulty in optimizing the codec for performance and efficiency
-* Difficulty in documenting and releasing the codec library
-
-**Project Success Metrics**
--------------------------
-
-* The codec library is able to compress and decompress data correctly
-* The codec library is able to handle multiple data types
-* The codec library is able to optimize compression and decompression for performance and efficiency
-* The codec library is well-documented and easy to use
