@@ -1,9 +1,6 @@
 # PyCodec
 Learning Codecs in Python
 
-**PyCodec**
-================
-
 **Objective**
 ------------
 
