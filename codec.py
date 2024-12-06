@@ -22,12 +22,66 @@ class HuffmanCodec:
         self.tree = None
 
     def compress(self, data):
-        # Implement Huffman compression algorithm
-        pass
+        frequency = calculate_frequency(data)
+        heap = build_heap(frequency)
+        merge_nodes(heap)g
+        root = heap[0]
+        codes = build_codes(root)
+        encoded_data = ""
+        for char in data:
+            encoded_data += codes[char]
+        return encoded_data
 
     def decompress(self, data):
-        # Implement Huffman decompression algorithm
-        pass
+        decoded_data = ""
+        current_node = self.tree
+        for bit in data:
+            if bit == "0":
+                current_node = current_node.left
+            else:
+                current_node = current_node.right
+            if current_node.char != None:
+                decoded_data += current_node.char
+                current_node = self.tree
+        return decoded_data
+
+    def build_tree(self, frequency):
+        heap = []
+        for char, freq in frequency.items():
+            node = Node(char, freq)
+            heapq.heappush(heap, node)
+        while len(heap) > 1:
+            node1 = heapq.heappop(heap)
+            node2 = heapq.heappop(heap)
+            merged_node = Node(None, node1.freq + node2.freq)
+            merged_node.left = node1
+            merged_node.right = node2
+            heapq.heappush(heap, merged_node)
+        self.tree = heap[0]
+
+    def build_codes(self, root, current_code, codes):
+        if root == None:
+            return
+        if root.char != None:
+            codes[root.char] = current_code
+        self.build_codes(root.left, current_code + "0", codes)
+        self.build_codes(root.right, current_code + "1", codes)
+
+    def calculate_frequency(self, data):
+        frequency = {}
+        for char in data:
+            if char not in frequency:
+                frequency[char] = 0
+            frequency[char] += 1
+        return frequency
+
+    def encode(self, data):
+        encoded_data = self.compress(data)
+        return encoded_data
+
+    def decode(self, encoded_data):
+        decoded_data = self.decompress(encoded_data)
+        return decoded_data
 
 class LZWCodec:
     def __init__(self):
